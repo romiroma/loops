@@ -19,7 +19,7 @@ if [ "$2" == "x86_64" ]; then
 
 else
     # Assemble for arm64 (example using as)
-    as -o build/test.o src/$2/*.asm
+    as -g -o build/test.o src/$2/*.asm
 
     gcc -I"$INCLUDE_DIR" -march=armv8-a+simd $1 -c -o build/test_c_simd.o src/$2/test_c_simd.c
 
