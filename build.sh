@@ -35,5 +35,9 @@ ar rcs lib/libtests.a build/tests.o
 # Pack test_c_simd.o into a static library
 ar rcs lib/libtest_c_simd.a build/test_c_simd.o
 
-# Compile main.c and link it with the library
-gcc -v -I"$INCLUDE_DIR" -mavx -mavx2 $1 -o main src/main.c -L./lib -ltests -ltest -ltest_c_simd
+if [ "$2" == "x86_64" ]; then
+    # Compile main.c and link it with the library
+    gcc -v -I"$INCLUDE_DIR" -mavx -mavx2 $1 -o main src/main.c -L./lib -ltests -ltest -ltest_c_simd
+else
+    gcc -v -I"$INCLUDE_DIR" -march=armv8-a+simd $1 -o main src/main.c -L./lib -ltests -ltest -ltest_c_simd
+fi
