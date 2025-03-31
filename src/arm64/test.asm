@@ -24,7 +24,6 @@ _test_asm_simd:
 .scalar_tail:
     // Horizontal sum of 4 uint32_t values in v0
     addv s0, v0.4s          // Reduce v0.4s horizontally into s0
-    fcvtzu x4, s0           // Convert single-precision float to unsigned integer
 
-    str x4, [x2]            // Store the final sum in the memory location pointed to by x2
+    str s0, [x2]            // Store the final sum in the memory location pointed to by x2
     ret
