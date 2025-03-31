@@ -27,13 +27,6 @@ test_asm_simd:
     jmp .simd_loop         ; Repeat SIMD loop
 
 .scalar_tail:
-    ; Horizontal sum of 4 uint32_t values in xmm0
-    ; pshufd xmm1, xmm0, 0xE   ; Shuffle high 64 bits to low 64 bits in xmm1
-    ; paddd xmm0, xmm1         ; Add packed uint32_t values in xmm0 and xmm1
-
-    ; pshufd xmm1, xmm0, 0x1   ; Shuffle low 32 bits to high 32 bits in xmm1
-    ; paddd xmm0, xmm1         ; Add packed uint32_t values in xmm0 and xmm1
-
     ; Horizontal sum of 4 uint64_t values in xmm0
     movhlps xmm1, xmm0       ; Move high 64 bits of xmm0 to low 64 bits of xmm1
     paddq xmm0, xmm1         ; Add packed uint64_t values in xmm0 and xmm1
