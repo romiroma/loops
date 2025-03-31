@@ -1,5 +1,5 @@
 #### Creates buffers with populating it with 0...BUFFER_SIZE (const uint16_t BUFFER_SIZE in main.c). Calculates sum of all elements 
-##### x86_64 for now
+##### x86_64/arm64/aarch64
 ```
 $ ./run_tests.sh -O3
 Starting the build process...
